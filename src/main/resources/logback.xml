@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<property name="appName" value="ZX-security-processor" />
+	<property name="log_base" value="/iflytek/logs" />
+	
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<!-- encoder 默认配置为PatternLayoutEncoder -->
+		<encoder>
+			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+		</encoder>
+	</appender>
+	
+	<appender name="ROLLING_FILE_COMMON" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${log_base}/${appName}/app.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<!-- rollover daily -->
+			<FileNamePattern>${log_base}/${appName}/history/app.log.%d{yyyy-MM-dd}.%i</FileNamePattern>
+            <MaxHistory>30</MaxHistory>
+            
+			<timeBasedFileNamingAndTriggeringPolicy	class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<!-- or whenever the file size reaches 10MB -->
+				<maxFileSize>10MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+		</rollingPolicy>
+		<encoder>
+			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<root level="WARN">
+		<appender-ref ref="STDOUT" />
+		<appender-ref ref="ROLLING_FILE_COMMON" />
+	</root>
+
+</configuration>

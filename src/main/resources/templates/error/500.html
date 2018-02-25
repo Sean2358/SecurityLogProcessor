@@ -1,0 +1,17 @@
+<!DOCTYPE html>  
+<html>  
+<head lang="en">  
+    <meta charset="UTF-8" />
+    <title>统一异常处理</title>
+    <link rel="stylesheet" type="text/css" href="/public/css/bootstrap.min.css" />
+</head>  
+<body>  
+	<div style="width:620px;height:288px;background-image: url(/system/images/500.png);background-repeat:no-repeat;margin-left:auto;margin-right:auto;">
+	    <h1 style="text-align: center;margin-top: 200px;">页面错误！请重试~</h1>
+	    <div style="margin-top: 10px;margin-left: 20px;">
+	    	<label style="color: red;">ERROR:</label>
+	    	<div th:text="${message}" style="padding-left: 20px;"></div>
+	    </div>
+    </div>
+</body>  
+</html>  
